@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <h1>Crie seu próprio meme moléculas</h1>
+        <div>
+            <h2>Dentro <input type="text" id="caixaTexto" class="caixa" value="de ..."></h2>
+        </div><br>
+        <div>
+            <h2>Dentro <span id="resultadoum"></span></h2>
+        </div><br>
+        <div>
+            <h2>Tem <input type="text" id="caixaTextob" class="caixa" value="..."></h2>
+            <h2>Tem <span id="resultadodois"></span></h2>
+        </div>
+
+        <button onclick="falarMeme()">Ouça em voz alta</button>
+
+  <script>
+    let valor = "de ...";
+    let valordois = "...";
+
+
+    document.getElementById("resultadoum").innerText = valor;
+    document.getElementById("resultadodois").innerText = valordois;
+
+
+    document.getElementById("caixaTexto").addEventListener("input", function(event) {
+      valor = event.target.value;
+      document.getElementById("resultadoum").innerText = valor;
+    });
+
+
+    document.getElementById("caixaTextob").addEventListener("input", function(event) {
+      valordois = event.target.value;
+      document.getElementById("resultadodois").innerText = valordois;
+    });
+
+            function falarMeme() {
+        const texto1 = "Dentro " + valor;
+        const texto2 = "Tem " + valordois;
+        const fraseCompleta = texto1 + " " + texto1 + ". " + texto2 + " " + texto2;
+
+        const fala = new SpeechSynthesisUtterance(fraseCompleta);
+        fala.lang = "pt-BR";       // idioma português brasileiro
+        fala.pitch = 2;            // tom mais agudo (engraçado)
+        fala.rate = 0.9;           // rapidez
+
+        // Tenta escolher uma voz em português
+        const vozes = speechSynthesis.getVoices();
+        const vozPortugues = vozes.find(v => v.lang === "pt-BR");
+
+        if (vozPortugues) {
+            fala.voice = vozPortugues;
+        }
+
+        speechSynthesis.speak(fala);
+        }
+
+// Garante que as vozes sejam carregadas antes de usar
+window.speechSynthesis.onvoiceschanged = () => {};
+
+  </script>
+    </body>
+</html>
