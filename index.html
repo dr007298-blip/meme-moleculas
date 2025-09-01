@@ -7,6 +7,13 @@
         </script>
     </head>
     <body>
+        <div id="popup" class="modal">
+  <div class="modal-content">
+    <h2>Termos de Uso</h2>
+    <p>Ao utilizar esta ferramenta, você concorda que é o único responsável pelo seu uso. Não nos responsabilizamos por quaisquer danos causados direta ou indiretamente.</p>
+    <button onclick="fecharPopup()">Aceito os Termos</button>
+  </div>
+</div>
         <h1>Crie seu próprio meme moléculas</h1>
         <div>
             <h2>Dentro <input type="text" id="caixaTexto" class="caixa" value="de ..."></h2>
@@ -20,7 +27,7 @@
         </div>
 
         <button onclick="falarMeme()">Ouça em voz alta</button>
-
+        
   <script>
     let valor = "de ...";
     let valordois = "...";
@@ -63,6 +70,10 @@
         }
 
 
+      function fecharPopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+      
 window.speechSynthesis.onvoiceschanged = () => {};
 
   </script>
