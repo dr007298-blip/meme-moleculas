@@ -41,17 +41,17 @@
       document.getElementById("resultadodois").innerText = valordois;
     });
 
-            function falarMeme() {
+    function falarMeme() {
         const texto1 = "Dentro " + valor;
         const texto2 = "Tem " + valordois;
         const fraseCompleta = texto1 + " " + texto1 + ". " + texto2 + " " + texto2;
 
         const fala = new SpeechSynthesisUtterance(fraseCompleta);
-        fala.lang = "pt-BR";       // idioma português brasileiro
-        fala.pitch = 2;            // tom mais agudo (engraçado)
-        fala.rate = 0.9;           // rapidez
+        fala.lang = "pt-BR";       
+        fala.pitch = 2;            
+        fala.rate = 0.9;           
 
-        // Tenta escolher uma voz em português
+        
         const vozes = speechSynthesis.getVoices();
         const vozPortugues = vozes.find(v => v.lang === "pt-BR");
 
@@ -62,7 +62,7 @@
         speechSynthesis.speak(fala);
         }
 
-// Garante que as vozes sejam carregadas antes de usar
+
 window.speechSynthesis.onvoiceschanged = () => {};
 
   </script>
